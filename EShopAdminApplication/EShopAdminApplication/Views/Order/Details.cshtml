@@ -1,0 +1,56 @@
+﻿@model EShopAdminApplication.Models.Order
+
+<h1>Order Details</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Product Image
+            </th>
+            <th>
+               Product Description
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Rating
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var i = 1;
+        }
+        @foreach (var item in Model.ProductInOrders)
+        {
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderedProduct.ProductName)
+                </td>
+                <td>
+                    <img src="@item.OrderedProduct.ProductImage" style="height:120px; width:100px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderedProduct.ProductDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderedProduct.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderedProduct.Rating)
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
